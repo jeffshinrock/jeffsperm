@@ -17,7 +17,16 @@
   <%= link_to 'Edit', edit_comment_path(@comment) %>
 <% else %>
 
-  <h1>You must be an admin to do this!</h1>
-
+  <p id="notice"><%= notice %></p>
+  <p>
+    <b>Name:</b>
+    <%= @comment.name %>
+  </p>
+  
+  <p>
+    <b>Timestamp:</b>
+    <%= @comment.timestamp %>
+  </p>
+  
 <% end %>
 <%= link_to 'Back', votes_path %>
