@@ -1,0 +1,23 @@
+<% if user_signed_in? %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Pw:</b>
+  <%= @user.password %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+
+<% else %>
+
+  <h1>You must be an admin to do this!</h1>
+
+<% end %>
+<%= link_to 'Back', votes_path %>

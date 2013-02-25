@@ -1,0 +1,31 @@
+.graph-container{
+  .votes{
+    text-align: center;
+    }
+  }
+
+.bar-graph{
+  width: 100%;
+  margin: 0 auto;
+  height: 2em;
+  border: 1px solid #474747;
+  background: #FF716E;
+  overflow: hidden;
+  position: relative;
+  font-family: "League Gothic";
+  p{
+    position: absolute;
+    margin: .1em 1em 0 0;
+    right: 0;
+    font-family: "League Gothic";
+    color: #474747;
+    }
+  .yes{
+    background: #D1FF96;
+    height: 100%;
+    position: absolute;
+    width: 100%;    
+    }
+  }
+  
+  

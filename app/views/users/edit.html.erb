@@ -1,0 +1,12 @@
+<% if user_signed_in? %>
+  <h1>Editing user</h1>
+  
+  <%= render 'form' %>
+  
+  <%= link_to 'Show', @user %> |
+  <%= link_to 'Back', users_path %>
+<% else %>
+
+  <h1>You must be an admin to do this!</h1>
+
+<% end %>

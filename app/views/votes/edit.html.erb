@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+  <h1>Editing vote</h1>
+  
+  <%= render 'form' %>
+  
+  <%= link_to 'Show', @vote %> |
+
+<% else %>
+
+  <h1>You must be an admin to do this!</h1>
+
+<% end %>
+
+<%= link_to 'Back', votes_path %>

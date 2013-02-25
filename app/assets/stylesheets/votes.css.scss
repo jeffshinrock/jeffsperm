@@ -1,0 +1,38 @@
+// Place all the styles related to the Votes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.actions{
+  display: inline;
+  }
+  
+.new_vote{
+  display: inline-block;
+  width: auto;
+  }
+
+.vote-now{
+  text-align: center;
+  .actions input{
+    padding: 1em;
+    color: #474747;
+    border-radius: 0;
+    border: 1px solid #000;
+    font-size: 1.5em;
+    }
+  .vote-yes, .vote-no{
+    display: inline;
+    }
+  .vote-yes{
+    .actions input{
+      background:#D1FF96;
+      }
+    }
+  .vote-no{
+    .actions input{
+      background:#FF716E;
+      }
+    }
+  }
+  
+  

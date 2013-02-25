@@ -1,0 +1,17 @@
+<div class="comment">
+  <div class="inner">
+    <div class="name">
+      <% authored = Time.parse(comment.timestamp) %>
+      <span class="user"><%= comment.name %></span> on <%= authored.strftime("%A, %B %d, %Y") %>
+    </div>
+    <p>
+      <%= comment.body %>
+    </p>
+    <% if user_signed_in? %>
+    <ul class="options">
+      <li><%= link_to 'Edit', edit_comment_path(comment) %></li>
+      <li><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    </ul>
+    <% end %>
+  </div>
+</div>

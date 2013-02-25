@@ -1,0 +1,90 @@
+body{
+  margin: 0;
+  background: url('back.png');
+}
+
+p{
+  font-family: "Linden Hill";
+  font-size: 1.4em;
+  line-height: 1.4;
+  color: #5e629c;
+  }
+  
+.big{
+  font-size: 1.5em;
+  }
+  
+.center{
+  text-align: center;
+  }
+  
+p.border{
+  border-top: 1px dashed #5e629c;
+  border-bottom: 1px dashed #5e629c;  
+  margin: 0;
+  padding: 1em 0;
+  }
+  
+.pic-grid{
+  width:100%;
+  }
+  
+img.border{
+  border: 1px solid #5e629c;
+  }
+  
+img.grid{
+  width: 20em;
+  float: left;
+  margin-bottom: 1em;
+  }
+  
+img.grid.odd{
+  margin-right: 1em;
+  }
+  
+h1,h2,h3,h4,h5,h6{
+  font-family: "League Gothic";
+  }
+h1{
+  font-size: 5em;
+  text-shadow: 1px 1px 1px black;
+  color: #5e629c;
+  text-align: center;
+  }
+
+.container{
+
+  .wrapper{
+    max-width: 60em;
+    margin: 0 auto;
+    margin-top: 0em;
+      .wrapper-inner{
+        background: rgba(255,255,255,.5);
+        padding: 1em;
+        margin: 5em 0 1em 0;
+        border: 1px solid #5e629c;
+        }
+    }
+  }
+  
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}

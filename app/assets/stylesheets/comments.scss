@@ -1,0 +1,41 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.comment-block{
+  h2{
+    text-transform: uppercase;
+    font-family: Arial;
+    font-size: .9em;
+    border-bottom: 1px solid #474747;
+    }
+  }
+
+.comment{
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 0 0 1em 0;
+  .inner{
+    padding: 1em;  
+    .name{
+      font-size: .8em;
+      color: #ababab;
+      font-family: Arial;
+      .user{
+        color: #474747;
+        }
+      }
+    ul.options{
+      list-style-type: none;
+      padding:0;
+      margin: 0;
+      li{
+        display: inline-block;
+        margin-right: 1em;
+        a{
+          text-decoration: none;
+          font-family: Arial;
+          }
+        }
+      }
+    }
+  }
