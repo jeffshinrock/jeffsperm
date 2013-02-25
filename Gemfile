@@ -5,9 +5,6 @@ gem 'rails', '3.2.7'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-
-gem 'pg'
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -43,6 +40,9 @@ group :development do
    gem 'better_errors'
 #   gem "sqlite3-ruby", :require => "sqlite3"
 end
-
+group :production do
+  gem 'thin'
+  gem 'pg'
+end
 
 gem 'devise-encryptable'
