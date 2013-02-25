@@ -41,6 +41,7 @@ group :development do
 #   gem "sqlite3-ruby", :require => "sqlite3"
 end
 group :production do
+  gem 'therubyracer-heroku', '0.8.1.pre3'
   gem 'thin'
   gem 'pg'
 end
