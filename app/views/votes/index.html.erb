@@ -17,46 +17,18 @@
         </p>
 
 
-
-<table>
-<!--
-  <tr>
-    <th>Total</th>
-    <th>Vote</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
--->
-
 <% total = 0 %>
 <% yes = 0 %>
 <% no = 0 %>
 
 <% @votes.each do |vote| %>
-  <tr>
-    <% total += 1 %>
-    <!-- <td><%= vote.total %></td> -->
-    
-    <!-- <td><%= vote.vote %></td> -->
     <% if vote.vote > 0 %>
       <% yes += 1 %>
     <% end %>
     <% if vote.vote < 1 %>
       <% no += 1 %>
     <% end %>
-    <td><!-- <%= link_to 'Show', vote %> --></td>
-    <td><!-- <%= link_to 'Edit', edit_vote_path(vote) %> --></td>
-    <td><!-- <%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' } %> --></td>
-  </tr>
 <% end %>
-</table>
-
-<!--
-<%= total %>
-<%= yes %>
-<%= no %>
--->
 
 <% percent = no * 100 / total  %>
 
