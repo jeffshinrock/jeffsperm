@@ -18,14 +18,14 @@
 
 
 
-<table>
+
 
 <% total = 0 %>
 <% yes = 0 %>
 <% no = 0 %>
 
 <% @votes.each do |vote| %>
-  <tr>
+
     <% total += 1 %>
     <!-- <td><%= vote.total %></td> -->
     
@@ -36,15 +36,9 @@
     <% if vote.vote < 1 %>
       <% no += 1 %>
     <% end %>
-  </tr>
-<% end %>
-</table>
 
-<!--
-<%= total %>
-<%= yes %>
-<%= no %>
--->
+<% end %>
+
 
 <% percent = no * 100 / total  %>
 
