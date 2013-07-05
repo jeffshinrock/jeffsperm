@@ -38,7 +38,7 @@ gem 'devise', '2.2.3'
 
 group :development do 
    gem 'better_errors'
-#   gem "sqlite3-ruby", :require => "sqlite3"
+   gem "sqlite3", :require => "sqlite3"
 end
 group :production do
   #gem 'therubyracer-heroku', '0.8.1.pre3'

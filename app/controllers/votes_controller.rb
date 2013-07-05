@@ -3,6 +3,8 @@ class VotesController < ApplicationController
   # GET /votes.json
   def index
     @votes = Vote.all
+    
+    @comments = Comment.where(:pid => nil)
 
     respond_to do |format|
       format.html # index.html.erb

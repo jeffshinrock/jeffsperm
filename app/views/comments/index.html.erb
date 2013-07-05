@@ -1,35 +1,90 @@
-
-<% if user_signed_in? %>
-  <h1>Listing comments</h1>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Timestamp</th>
-      <th>Body</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+<h1>Hello, I am Jeff!</h1>
   
-  <% @comments.each do |comment| %>
-    <tr>
-      <td><%= comment.name %></td>
-      <td><%= comment.timestamp %></td>
-      <td><%= comment.body %></td>
-      <td><%= link_to 'Show', comment %></td>
-      <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-      <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-    
-  <% end %>
-  </table>
-  <%= link_to 'New Comment', new_comment_path %>
-  
-  <br />
-<% else %>
 
-  <h1>You must be an admin to do this!</h1>
+        
+        <p class="border center">Several months ago, <%= link_to "I told my story", votes_path %> and asked you all to vote on whether I should get a perm. The results were wildly in favor of bringin' on back the 70's. I sincerely thank you all for your support.</p>
+        <p>
+          <% total = 0 %>
+          <% yes = 0 %>
+          <% no = 0 %>
+          
+          <% @votes.each do |vote| %>
+          
+              <% total += 1 %>
+              <!-- <td><%= vote.total %></td> -->
+              
+              <!-- <td><%= vote.vote %></td> -->
+              <% if vote.vote > 0 %>
+                <% yes += 1 %>
+              <% end %>
+              <% if vote.vote < 1 %>
+                <% no += 1 %>
+              <% end %>
+          
+          <% end %>
+          
+          
+          <% percent = no * 100 / total  %>
+          
+          <div class="graph-container">
+            <div class="votes">
+              <p>Total votes : <%= total %></p>
+            </div>
+            <div class="bar-graph">
+                <p><%= no %> (<%= no * 100 / total%>%)</p>
+                <div class="yes" style="right: <%= percent %>%"><p><%= yes %> (<%= yes * 100 / total%>%)</p></div>
+            </div>
+          </div>
+        </p>
+        <p class="border">After speaking with several of the voters, I discovered that a substantial subset of them did not expect to actually follow through with the wicked curls. Unfortunately for those people, they clearly didn't know the boundlessness (shamelessness) of my character and lack of quality decisions I have made in my life.</p>
+        <p class="center">
+          <%= image_tag("newperm.jpg", :class => "border") %>
+        </p>
+        <p class="border">
+          I appreciate the votes and the comments. As time moves on, I will update this page with new perm pictures (hopefully with some of the other voters!) and various other artifacts and quotes about the my newfound glorious locks.
+        </p>
+        <p>
+          <b><span class="big">Thank you all!</span></b>
+        </p>
+
+<% @page_comments.each do |c| %>
+
+  <div class="comment">
+    <div class="inner">
+      <div class="name">
+        <% authored = Time.parse(c.timestamp) %>
+        <span class="user"><%= c.name %></span> on <%= authored.strftime("%A, %B %d, %Y") %>
+      </div>
+      <p>
+        <%= c.body %>
+      </p>
+      <% if user_signed_in? %>
+      <ul class="options">
+        <li><%= link_to 'Edit', edit_comment_path(c) %></li>
+        <li><%= link_to 'Destroy', c, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      </ul>
+      <% end %>
+    </div>
+  </div>    
 
 <% end %>
 
-<%= link_to 'Back', votes_path %>
+<div class="comment-block">
+  <h2>Got something to say?</h2>
+  <%= form_for Comment.new do |f| %>
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.text_area :body %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :timestamp %>
+    </div>
+      <%= f.hidden_field :pid, :value => "1" %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>  
+</div>

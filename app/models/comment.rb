@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :name, :timestamp, :body
+  attr_accessible :name, :timestamp, :body, :pid
   after_initialize :init
   
   def init

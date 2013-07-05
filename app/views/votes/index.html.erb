@@ -53,35 +53,34 @@
 </div>
 <br />
 
-<div class="vote-now">
-  <div class="vote-yes">
-    <%= form_for Vote.new do |yes| %>
-      <div class="field">
-        <%= yes.hidden_field :vote,  :value => 1 %>
-      </div>
-      <div class="actions">
-        <%= yes.submit "Super Sweet (yes)"%>
-      </div>  
-    <% end %>
-  </div>
-  
-  <div class="vote-no">
-    <%= form_for Vote.new do |no| %>
-      <div class="field">
-        <%= no.hidden_field :vote,  :value => 0%>
-      </div>
-      <div class="actions">
-        <%= no.submit "Really? (no)" %>
-      </div>    
-    <% end %>
-  </div>
+
 </div>
 <div class="comment-block">
   <h2>Got something to say?</h2>
   
-  <%= render Comment.all do |c| %>
+  <% @comments.each do |c| %>
+  
+    <div class="comment">
+      <div class="inner">
+        <div class="name">
+          <% authored = Time.parse(c.timestamp) %>
+          <span class="user"><%= c.name %></span> on <%= authored.strftime("%A, %B %d, %Y") %>
+        </div>
+        <p>
+          <%= c.body %>
+        </p>
+        <% if user_signed_in? %>
+        <ul class="options">
+          <li><%= link_to 'Edit', edit_comment_path(c) %></li>
+          <li><%= link_to 'Destroy', c, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        </ul>
+        <% end %>
+      </div>
+    </div>    
   
   <% end %>
+  
+  
   
   <%= form_for Comment.new do |f| %>
     <div class="field">

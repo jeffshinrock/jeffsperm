@@ -2,7 +2,9 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @comments = Comment.where("pid IS ?", nil)
+    @votes = Vote.all
+    @page_comments = Comment.where(:pid => 1)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,13 +46,21 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Thanks for sharing with the world! The moderator reserves the right to remove offensive material.' }
-        format.json { render json: @comment, status: :created, location: @comment }
+        #format.html { redirect_to @comment, notice: 'Thanks for sharing with the world! The moderator reserves the right to remove offensive material.' }
+        logger.debug "Params: #{params[:comment][:pid]}"
+        if params[:comment][:pid].nil?
+          format.html { redirect_to votes_path, notice: 'Thanks for sharing with the world! The moderator reserves the right to remove offensive material.' }
+        elsif params[:comment][:pid] == "1"
+          format.html { redirect_to comments_path, notice: 'Thanks for sharing with the world! The moderator reserves the right to remove offensive material.' }
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
+    
+
+    
   end
 
   # PUT /comments/1
